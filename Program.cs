@@ -1,4 +1,4 @@
-using CsharpApi_EvidencijaRada.Data;
+﻿using CsharpApi_EvidencijaRada.Data;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -19,7 +19,16 @@ builder.Services.AddDbContext<EvidencijaContext>(
     
     );
 
+// Svi se od svuda na sve moguæe naèine mogu spojitina naš API
+// Čitati https://code-maze.com/aspnetcore-webapi-best-practices/
+builder.Services.AddCors(opcije =>
+{
+    opcije.AddPolicy("CorsPolicy",
+        builder =>
+            builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()
+    );
 
+});
 
 
 
@@ -47,6 +56,8 @@ app.MapControllers();
 app.UseStaticFiles();
 app.UseDefaultFiles();
 app.MapFallbackToFile("index.html");
-//  Zavr�io potrebe produkcije
+
+app.UseCors("CorsPolicy");
+//  Završio potrebe produkcije
 
 app.Run();
