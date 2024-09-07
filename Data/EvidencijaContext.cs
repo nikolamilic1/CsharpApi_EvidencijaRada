@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace CsharpApi_EvidencijaRada.Data
 {
+
+    
+
     public class EvidencijaContext:DbContext
     {
         public EvidencijaContext(DbContextOptions<EvidencijaContext> opcije) : base(opcije) { }
@@ -12,6 +15,6 @@ namespace CsharpApi_EvidencijaRada.Data
         
         public DbSet<Projekt> Projekt { get; set; }
 
-
+        
     }
 }

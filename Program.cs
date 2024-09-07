@@ -42,6 +42,7 @@ var app = builder.Build();
     app.UseSwaggerUI(opcije =>
     {
         opcije.ConfigObject.AdditionalItems.Add("requestSnippetsEnabled", true);
+        opcije.EnableTryItOutByDefault();
     });
 //}
 
@@ -61,3 +62,5 @@ app.UseCors("CorsPolicy");
 //  Završio potrebe produkcije
 
 app.Run();
+
+
