@@ -56,7 +56,16 @@ namespace CsharpApi_EvidencijaRada.Controllers
             return Ok(new { poruka = "Uspješno promjenjeno" });
         }
 
-
+        [HttpDelete]
+        [Route("{sifra:int}")]
+        [Produces("application/json")]
+        public IActionResult Delete(int sifra)
+        {
+            var djelatnikIzBaze = (_context.Djelatnik.Find(sifra));
+            _context.Djelatnik.Remove(djelatnikIzBaze);
+            _context.SaveChanges();
+            return Ok(new { poruka = "Uspješno obrisano" });
+        }
 
 
 
