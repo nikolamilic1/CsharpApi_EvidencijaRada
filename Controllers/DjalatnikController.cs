@@ -1,4 +1,5 @@
 ﻿using CsharpApi_EvidencijaRada.Data;
+using CsharpApi_EvidencijaRada.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CsharpApi_EvidencijaRada.Controllers
@@ -29,6 +30,13 @@ namespace CsharpApi_EvidencijaRada.Controllers
         public IActionResult GetBySifra(int sifra)
         {
             return Ok(_context.Djelatnik.Find(sifra));
+        }
+        [HttpPost]
+        public IActionResult Post(Djelatnik djelatnik)
+        {
+            _context.Djelatnik.Add(djelatnik);
+            _context.SaveChanges();
+            return StatusCode(StatusCodes.Status201Created, djelatnik);
         }
 
 
