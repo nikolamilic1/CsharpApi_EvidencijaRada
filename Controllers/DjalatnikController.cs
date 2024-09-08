@@ -17,6 +17,7 @@ namespace CsharpApi_EvidencijaRada.Controllers
             _context = context;
         }
 
+
         // RUTE
 
         [HttpGet]
@@ -31,6 +32,7 @@ namespace CsharpApi_EvidencijaRada.Controllers
         {
             return Ok(_context.Djelatnik.Find(sifra));
         }
+
         [HttpPost]
         public IActionResult Post(Djelatnik djelatnik)
         {
@@ -66,6 +68,8 @@ namespace CsharpApi_EvidencijaRada.Controllers
             _context.SaveChanges();
             return Ok(new { poruka = "Uspješno obrisano" });
         }
+
+
 
 
 
