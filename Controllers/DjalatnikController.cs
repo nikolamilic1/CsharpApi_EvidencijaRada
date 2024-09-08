@@ -50,8 +50,12 @@ namespace CsharpApi_EvidencijaRada.Controllers
             djelatnikIzBaze.Prezime = djelatnik.Prezime;
             djelatnikIzBaze.Email = djelatnik.Email;
 
+            _context.Djelatnik.Update(djelatnikIzBaze);
+            _context.SaveChanges();
 
+            return Ok(new { poruka = "Uspješno promjenjeno" });
         }
+
 
 
 
