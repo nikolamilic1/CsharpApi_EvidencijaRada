@@ -27,7 +27,7 @@ namespace CsharpApi_EvidencijaRada.Controllers
         }
 
         [HttpGet]
-        [Route("{sifra:int")]
+        [Route("{sifra:int}")]
         public IActionResult GetBySifra(int sifra)
         {
             return Ok(_context.Djelatnik.Find(sifra));
