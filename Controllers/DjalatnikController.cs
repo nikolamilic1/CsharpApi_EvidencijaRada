@@ -5,7 +5,7 @@ namespace CsharpApi_EvidencijaRada.Controllers
 {
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class DjalatnikController:ControllerBase
+    public class DjalatnikController : ControllerBase
     {
 
         private readonly EvidencijaContext _context;
@@ -24,10 +24,16 @@ namespace CsharpApi_EvidencijaRada.Controllers
             return Ok(_context.Djelatnik);
         }
 
+        [HttpGet]
+        [Route("{sifra:int")]
+        public IActionResult GetBySifra(int sifra)
+        {
+            return Ok(_context.Djelatnik.Find(sifra));
+        }
 
 
 
-    
+
 
     }
 }
