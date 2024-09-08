@@ -15,6 +15,8 @@ namespace CsharpApi_EvidencijaRada.Data
         
         public DbSet<Projekt> Projekt { get; set; }
 
+        public DbSet<Djelatnik> Djelatnik { get; set; }
+
         
     }
 }
