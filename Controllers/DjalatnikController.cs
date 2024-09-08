@@ -39,6 +39,19 @@ namespace CsharpApi_EvidencijaRada.Controllers
             return StatusCode(StatusCodes.Status201Created, djelatnik);
         }
 
+        [HttpPut]
+        [Route("{sifra:int}")]
+        [Produces("application/json")]
+        public IActionResult Put(int sifra, Djelatnik djelatnik)
+        {
+            var djelatnikIzBaze = _context.Djelatnik.Find(sifra);
+
+            djelatnikIzBaze.Ime = djelatnik.Ime;
+            djelatnikIzBaze.Prezime = djelatnik.Prezime;
+            djelatnikIzBaze.Email = djelatnik.Email;
+
+
+        }
 
 
 
