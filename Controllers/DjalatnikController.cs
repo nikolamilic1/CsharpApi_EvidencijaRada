@@ -3,6 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace CsharpApi_EvidencijaRada.Controllers
 {
+    [ApiController]
+    [Route("api/v1/[controller]")]
     public class DjalatnikController:ControllerBase
     {
 
