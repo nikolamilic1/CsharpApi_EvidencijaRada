@@ -16,6 +16,17 @@ namespace CsharpApi_EvidencijaRada.Controllers
             _context = context;
         }
 
+        // RUTE
+
+        [HttpGet]
+        public IActionResult Get()
+        {
+            return Ok(_context.Djelatnik);
+        }
+
+
+
+
     
 
     }
