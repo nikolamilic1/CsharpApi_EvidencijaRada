@@ -19,7 +19,7 @@ builder.Services.AddDbContext<EvidencijaContext>(
     
     );
 
-// Svi se od svuda na sve moguæe naèine mogu spojitina naš API
+// Svi se od svuda na sve moguæe naèine mogu spojiti na naš API
 // Čitati https://code-maze.com/aspnetcore-webapi-best-practices/
 builder.Services.AddCors(opcije =>
 {
