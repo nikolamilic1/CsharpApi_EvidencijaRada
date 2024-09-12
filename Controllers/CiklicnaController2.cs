@@ -16,7 +16,7 @@ namespace CsharpApi_EvidencijaRada.Controllers
             //int red = 11;
             //int kolona = 13;
             Ciklicna[,] ciklicna = new Ciklicna[red, kolona];
-            //int[,] tablica = ciklicna; // dvodimenzionalni niz
+            int[,] tablica = ciklicna; // dvodimenzionalni niz
 
             int redMax = red - 1;
             int redMin = 0;
