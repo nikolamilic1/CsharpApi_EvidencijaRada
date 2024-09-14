@@ -1,14 +1,16 @@
 
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
+import NavBarEvidencija from './components/NavBarEvidencija'
+
 
 function App() {
+  
   
 
   return (
     <>
-      <h1>Hello</h1>
-      <p>World</p>
+      <NavBarEvidencija />
     </>
   )
 }
