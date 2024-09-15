@@ -19,9 +19,9 @@ export default function NavBarEvidencija(){
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link onClick={()=>navigate(RoutesNames.HOME)}>Početna</Nav.Link>
-            <Nav.Link href="#link">Swagger</Nav.Link>
+            <Nav.Link href="https://nikolamilic1-001-site1.htempurl.com/swagger/index.html" target='_blank'>Swagger</Nav.Link>
             <NavDropdown title="Programi" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
+              <NavDropdown.Item onClick={()=>navigate(RoutesNames.PROJEKT_PREGLED)}>Projekti</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">
                 Another action
               </NavDropdown.Item>
