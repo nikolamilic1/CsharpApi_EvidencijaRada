@@ -1,28 +1,33 @@
-
-import 'bootstrap/dist/css/bootstrap.min.css'
+import { useState } from 'react'
+import reactLogo from './assets/react.svg'
+import viteLogo from '/vite.svg'
 import './App.css'
-import NavBarEvidencija from './components/NavBarEvidencija'
-import { Route, Routes } from 'react-router-dom'
-import { RoutesNames } from './Constants'
-import Pocetna from './pages/Pocetna'
-import ProjektiPregled from './pages/projekti/ProjektiPregled'
-import ProjektiDodaj from './pages/projekti/ProjektiDodaj'
-import ProjektiPromjena from './pages/projekti/ProjektiPromjena'
 
 function App() {
-   
-  
+  const [count, setCount] = useState(0)
 
   return (
     <>
-      <NavBarEvidencija />
-      <Routes>
-        <Route path={RoutesNames.HOME} element={<Pocetna />} />
-
-        <Route path={RoutesNames.PROJEKT_PREGLED} element={<ProjektiPregled />} />
-        <Route path={RoutesNames.PROJEKT_NOVI} element={<ProjektiDodaj />} />
-        <Route path={RoutesNames.PROJEKT_PROMJENA} element={<ProjektiPromjena />} />
-      </Routes>
+      <div>
+        <a href="https://vitejs.dev" target="_blank">
+          <img src={viteLogo} className="logo" alt="Vite logo" />
+        </a>
+        <a href="https://react.dev" target="_blank">
+          <img src={reactLogo} className="logo react" alt="React logo" />
+        </a>
+      </div>
+      <h1>Vite + React</h1>
+      <div className="card">
+        <button onClick={() => setCount((count) => count + 1)}>
+          count is {count}
+        </button>
+        <p>
+          Edit <code>src/App.jsx</code> and save to test HMR
+        </p>
+      </div>
+      <p className="read-the-docs">
+        Click on the Vite and React logos to learn more
+      </p>
     </>
   )
 }
