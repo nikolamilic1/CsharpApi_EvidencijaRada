@@ -1,6 +1,8 @@
 import { Button, Container, Table } from "react-bootstrap";
 import ProjektService from "../../services/ProjektService";
 import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { RoutesNames } from "../../Constants";
 
 
 
@@ -9,6 +11,10 @@ export default function ProjektiPregled(){
 const[projekti,setProjekti] = useState();
 
 async function dohvatiProjekte() {
+
+    //zaustavi kod u Chrome consoli i tamo se može raditi debug
+    //debugger;
+    
     await ProjektService.get()
     .then((odgovor)=>{
         setProjekti(odgovor);
@@ -35,6 +41,7 @@ useEffect(()=>{
 
     return(
         <Container>
+            <Link to={RoutesNames.PROJEKT_NOVI}>Dodaj novi projekt</Link>
             <Table striped bordered hover responsive>
                 <thead>
                     <tr>
