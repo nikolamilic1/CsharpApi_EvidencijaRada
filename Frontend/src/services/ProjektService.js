@@ -20,7 +20,18 @@ async function obrisi(sifra) {
     })
 }
 
+async function promjena(projekt) {
+    return await HttpService.post('/Projekt', projekt)
+    .then((odgovor)=>{
+        return {greska: false, poruka: odgovor.data}
+    })
+    .catch((e)=>{
+        return {greska: true, poruka: 'Projekt se ne može dodati!'}
+    })
+}
+
 export default{
     get,
-    obrisi
+    obrisi,
+    promjena
 }
