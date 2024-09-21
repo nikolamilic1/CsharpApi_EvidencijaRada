@@ -6,7 +6,7 @@ import { Route, Routes } from 'react-router-dom'
 import { RoutesNames } from './Constants'
 import Pocetna from './pages/Pocetna'
 import ProjektiPregled from './pages/projekti/ProjektiPregled'
-
+import ProjektiDodaj from './pages/projekti/ProjektiDodaj'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -18,8 +18,7 @@ function App() {
         <Route path={RoutesNames.HOME} element={<Pocetna/>} />
 
         <Route path={RoutesNames.PROJEKT_PREGLED} element={<ProjektiPregled />} />
-
-        
+        <Route path={RoutesNames.PROJEKT_NOVI} element={<ProjektiDodaj />} />        
       </Routes>
     </>
   )
