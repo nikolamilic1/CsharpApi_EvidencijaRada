@@ -1,10 +1,36 @@
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RoutesNames } from "../../Constants";
+import ProjektService from "../../services/ProjektService";
 
 
 
 export default function ProjektiDodaj(){
+
+    const navigate = useNavigate();
+
+    async function dodaj(projekt) {
+        // console.log(projekt);                  // wp4-17.09.2024  od 1:17:25
+       // console.log(JSON.stringify(projekt));   //  do  1:27:00
+       const odgovor = await ProjektService.promjena(projekt);
+       if(odgovor.greska){
+           alert(odgovor.poruka);
+           return;
+       }
+       navigate(RoutesNames.PROJEKT_PREGLED);
+    }
+
+    function obradiSubmit(e){
+        e.preventDefault();
+
+        const podaci = new FormData(e.target);
+
+        dodaj({
+            naziv: podaci.get('naziv'),  // naziv je došao iz atributa name od Form.Control
+            klijent: podaci.get('klijent')
+        });
+    }
+
 
 
     return(
