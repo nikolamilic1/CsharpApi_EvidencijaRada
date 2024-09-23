@@ -1,7 +1,7 @@
 import { Button, Container, Table } from "react-bootstrap";
 import ProjektService from "../../services/ProjektService";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { RoutesNames } from "../../Constants";
 
 
@@ -9,6 +9,7 @@ import { RoutesNames } from "../../Constants";
 export default function ProjektiPregled(){
 
 const[projekti,setProjekti] = useState();
+const navigate = useNavigate();
 
 async function dohvatiProjekte() {
 
@@ -19,8 +20,11 @@ async function dohvatiProjekte() {
     .then((odgovor)=>{
         setProjekti(odgovor);
     })
-    .catch((e)=>console.error(e));
+    .catch((e)=>{console.log(e)});
 }
+    useEffect(()=>{
+        dohvatiProjekte();
+    },[]);
 
 async function obrisiAsync(sifra) {
     const odgovor = await ProjektService.obrisi(sifra);
@@ -35,9 +39,9 @@ function obrisi(sifra){
     obrisiAsync(sifra);
 }
 
-useEffect(()=>{
-    dohvatiProjekte();
-},[]);
+// useEffect(()=>{
+//     dohvatiProjekte();
+// },[]);
 
     return(
         <Container>
@@ -56,11 +60,18 @@ useEffect(()=>{
                             <td>{projekt.naziv}</td>
                             <td>{projekt.klijent}</td>
                             <td>
+                            <Button
+                                variant="primary" 
+                                onClick={()=>navigate(`/projekti/${projekt.sifra}`)}>
+                                    Promjeni
+                                </Button>
+                                &nbsp;&nbsp;
                                 <Button
                                 variant="danger" 
                                 onClick={()=>obrisi(projekt.sifra)}>
                                     Obriši
                                 </Button>
+                         
                             </td>
                         </tr>
                     ))}
