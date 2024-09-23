@@ -12,7 +12,7 @@ export default function ProjektiDodaj(){
     async function dodaj(projekt) {
         // console.log(projekt);                  // wp4-17.09.2024  od 1:17:25
        // console.log(JSON.stringify(projekt));   //  do  1:27:00
-       const odgovor = await ProjektService.promjena(projekt);
+       const odgovor = await ProjektService.dodaj(projekt);
        if(odgovor.greska){
            alert(odgovor.poruka);
            return;
@@ -34,10 +34,11 @@ export default function ProjektiDodaj(){
 
 
     return(
+        <>
         <Container>
             Dodavanje novog projekta
             <hr />
-            <Form>
+            <Form onSubmit={obradiSubmit}>                
                 <Form.Group controlId="naziv">
                     <Form.Label>Naziv</Form.Label>   
                     <Form.Control type="text" name="naziv" required />                    
@@ -63,5 +64,6 @@ export default function ProjektiDodaj(){
             </Row>
             </Form>
         </Container>
+        </>
     )
 }
