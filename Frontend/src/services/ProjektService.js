@@ -11,7 +11,7 @@ async function get() {
     .catch((e)=>{console.error(e)})
 }
 
-async function getBySifra() {
+async function getBySifra(sifra) {
     return await HttpService.get('/Projekt/' + sifra)
      .then((odgovor)=>{
         return {greska: false, poruka: odgovor.data}
