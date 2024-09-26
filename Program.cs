@@ -1,4 +1,5 @@
 ﻿using CsharpApi_EvidencijaRada.Data;
+using CsharpApi_EvidencijaRada.Mapping;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -31,7 +32,8 @@ builder.Services.AddCors(opcije =>
 });
 
 
-
+// Automapper
+builder.Services.AddAutoMapper(typeof(EvidencijaMappingProfile));
 
 var app = builder.Build();
 
