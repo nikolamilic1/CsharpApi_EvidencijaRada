@@ -1,6 +1,11 @@
-﻿namespace CsharpApi_EvidencijaRada.Models.DTO
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace CsharpApi_EvidencijaRada.Models.DTO
 {
-    public class ProjektDTOInsertUpdate
-    {
-    }
+    public record ProjektDTOInsertUpdate(
+        [Required(ErrorMessage = "Naziv obavezno")]
+        string Naziv,
+        [Required(ErrorMessage = "Klijent obavezno")]
+        string Klijent
+        );
 }
