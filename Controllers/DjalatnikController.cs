@@ -29,7 +29,30 @@ namespace CsharpApi_EvidencijaRada.Controllers
             }
         }
 
+        [HttpGet]
+        [Route("{sifra:int}")]
+        public ActionResult<DjelatnikDTORead> GetBySifra(int sifra) 
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { poruka = ModelState });
+            }
+            Djelatnik? e;
+            try
+            {
+                e = _context.Djelatnik.Find(sifra);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { poruka = ex.Message });
+            }
+            if (e == null)
+            {
+                return NotFound(new { poruka = "Djelatnik ne postoji u bazi" });
+            }
 
+            return Ok(_mapper.Map<DjelatnikDTORead>(e));
+        }
 
 
 
