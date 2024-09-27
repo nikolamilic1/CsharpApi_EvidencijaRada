@@ -1,5 +1,7 @@
-﻿using CsharpApi_EvidencijaRada.Data;
+﻿using AutoMapper;
+using CsharpApi_EvidencijaRada.Data;
 using CsharpApi_EvidencijaRada.Models;
+using CsharpApi_EvidencijaRada.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CsharpApi_EvidencijaRada.Controllers
@@ -7,30 +9,80 @@ namespace CsharpApi_EvidencijaRada.Controllers
 
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class ProjektController:ControllerBase
+    //public class ProjektController:ControllerBase
+    //{
+    //    // dependency injection
+
+    //    private readonly EvidencijaContext _context;
+
+    //    public ProjektController(EvidencijaContext context)
+    //    {
+    //        _context = context;
+    //    }
+    public class ProjektController(EvidencijaContext context, IMapper mapper) : EvidencijaController(context, mapper)
     {
-        // dependency injection
 
-        private readonly EvidencijaContext _context;
 
-        public ProjektController(EvidencijaContext context)
-        {
-            _context = context;
-        }
 
         // RUTE
         [HttpGet]
-        public IActionResult Get()
+        //public IActionResult Get()
+        //{
+        //    return Ok(_context.Projekt);
+        //}
+
+        public ActionResult<List<ProjektDTORead>> Get() 
         {
-            return Ok(_context.Projekt);
+            if (!ModelState.IsValid) 
+            {
+                return BadRequest(new { poruka = ModelState });
+            }
+            try
+            {
+                return Ok(_mapper.Map<List<ProjektDTORead>>(_context.Projekt));
+            }
+            catch (Exception ex)
+            { 
+                return BadRequest(new { poruka = ex.Message });
+            }
+
         }
+
+
 
         [HttpGet]
         [Route("{sifra:int}")]
-        public IActionResult GetBySifra(int sifra)
+        //public IActionResult GetBySifra(int sifra)
+        //{
+        //    return Ok(_context.Projekt.Find(sifra));
+        //}
+        public ActionResult<ProjektDTORead> GetBySifra(int sifra)         
         {
-            return Ok(_context.Projekt.Find(sifra));
+            if (!ModelState.IsValid) 
+            {
+                return BadRequest(new { poruka = ModelState });
+            }
+            Projekt? e;
+            try
+            {
+                e = _context.Projekt.Find(sifra);
+            }
+            catch (Exception ex) 
+            { 
+                return BadRequest(new {poruka = ex.Message});
+            }
+            if (e == null)
+            {
+                return NotFound(new { poruka = "Projekt ne postoji u bazi" });
+            }
+            return Ok(_mapper.Map<ProjektDTORead>(e));
+
+
+
+
+                
         }
+
 
         [HttpPost]
         public IActionResult Post(Projekt projekt)
