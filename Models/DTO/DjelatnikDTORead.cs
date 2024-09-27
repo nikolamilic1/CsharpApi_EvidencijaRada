@@ -1,6 +1,10 @@
 ﻿namespace CsharpApi_EvidencijaRada.Models.DTO
 {
-    public class DjelatnikDTORead
-    {
-    }
+    public record DjelatnikDTORead(
+        int Sifra,
+        string Ime,
+        string Prezime,
+        string Email);
+
+
 }
