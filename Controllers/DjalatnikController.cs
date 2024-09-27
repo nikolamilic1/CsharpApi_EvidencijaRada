@@ -54,6 +54,65 @@ namespace CsharpApi_EvidencijaRada.Controllers
             return Ok(_mapper.Map<DjelatnikDTORead>(e));
         }
 
+        [HttpPost]
+        public IActionResult Post(DjelatnikDTOInsertUpdate djelatnikDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { poruka = ModelState });
+            }
+            try
+            {
+                var e = _mapper.Map<Djelatnik>(djelatnikDTO);
+                _context.Djelatnik.Add(e);
+                _context.SaveChanges();
+                return StatusCode(StatusCodes.Status201Created, _mapper.Map<DjelatnikDTORead>(e));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { poruka = ex.Message });
+            }
+        }
+
+
+        [HttpPut]
+        [Route("{sifra:int}")]
+        [Produces("application/json")]
+        public IActionResult Put(int sifra, DjelatnikDTOInsertUpdate djelatnikDTO)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { poruka = ModelState });
+            }
+            try
+            {
+                Djelatnik? e;
+                try
+                {
+                    e = _context.Djelatnik.Find(sifra);
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(new { poruka = ex.Message });
+                }
+                if (e == null)
+                {
+                    return NotFound(new { poruka = "Djelatnik ne postoji u bazi" });
+                }
+
+                e = _mapper.Map(djelatnikDTO, e);
+
+                _context.Djelatnik.Update(e);
+                _context.SaveChanges();
+
+                return Ok(new { poruka = "Uspješno promjenjeno" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { poruka = ex.Message });
+            }
+
+        }
 
 
 
