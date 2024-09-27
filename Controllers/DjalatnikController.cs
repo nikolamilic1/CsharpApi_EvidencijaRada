@@ -114,7 +114,40 @@ namespace CsharpApi_EvidencijaRada.Controllers
 
         }
 
+        [HttpDelete]
+        [Route("{sifra:int}")]
+        [Produces("application/json")]
+        public IActionResult Delete(int sifra)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { poruka = ModelState });
+            }
+            try
+            {
+                Djelatnik? e;
+                try
+                {
+                    e = _context.Djelatnik(sifra);
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(new { poruka = ex.Message });
+                }
+                if (e == null)
+                {
+                    return NotFound("Djelatnik ne postoji u bazi");
+                }
+                _context.Djelatnik.Remove(e);
+                _context.SaveChanges();
+                return Ok(new { poruka = "Uspješno obrisano" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { poruka = ex.Message });
+            }
 
+        }
 
 
 
