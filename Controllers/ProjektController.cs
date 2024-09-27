@@ -85,12 +85,31 @@ namespace CsharpApi_EvidencijaRada.Controllers
 
 
         [HttpPost]
-        public IActionResult Post(Projekt projekt)
+        //public IActionResult Post(Projekt projekt)
+        //{
+        //    _context.Projekt.Add(projekt);
+        //    _context.SaveChanges();
+        //    return StatusCode(StatusCodes.Status201Created, projekt);
+        //}
+        public IActionResult Post(ProjektDTORead projektDTO)
         {
-            _context.Projekt.Add(projekt);
-            _context.SaveChanges();
-            return StatusCode(StatusCodes.Status201Created, projekt);
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    var e = _mapper.Map<Projekt>(projektDTO);
+                    _context.Projekt.Add(e);
+                    _context.SaveChanges();
+                    return StatusCode(StatusCodes.Status201Created, _mapper.Map<ProjektDTORead>(e));
+                }
+                catch (Exception ex) 
+                {
+                    return BadRequest(new {poruka = ex.Message});
+                }
+                
+            }
         }
+
 
         [HttpPut]
         [Route("{sifra:int}")]
