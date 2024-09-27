@@ -24,16 +24,19 @@ namespace CsharpApi_EvidencijaRada.Controllers
 
 
 
-        // RUTE
-        [HttpGet]
+        //// RUTE
+        //[HttpGet]
         //public IActionResult Get()
         //{
         //    return Ok(_context.Projekt);
         //}
 
-        public ActionResult<List<ProjektDTORead>> Get() 
+
+        // RUTE
+        [HttpGet]
+        public ActionResult<List<ProjektDTORead>> Get()
         {
-            if (!ModelState.IsValid) 
+            if (!ModelState.IsValid)
             {
                 return BadRequest(new { poruka = ModelState });
             }
@@ -42,7 +45,7 @@ namespace CsharpApi_EvidencijaRada.Controllers
                 return Ok(_mapper.Map<List<ProjektDTORead>>(_context.Projekt));
             }
             catch (Exception ex)
-            { 
+            {
                 return BadRequest(new { poruka = ex.Message });
             }
 
@@ -50,15 +53,17 @@ namespace CsharpApi_EvidencijaRada.Controllers
 
 
 
-        [HttpGet]
-        [Route("{sifra:int}")]
+        //[HttpGet]
+        //[Route("{sifra:int}")]
         //public IActionResult GetBySifra(int sifra)
         //{
         //    return Ok(_context.Projekt.Find(sifra));
         //}
-        public ActionResult<ProjektDTORead> GetBySifra(int sifra)         
+        [HttpGet]
+        [Route("{sifra:int}")]
+        public ActionResult<ProjektDTORead> GetBySifra(int sifra)
         {
-            if (!ModelState.IsValid) 
+            if (!ModelState.IsValid)
             {
                 return BadRequest(new { poruka = ModelState });
             }
@@ -67,9 +72,9 @@ namespace CsharpApi_EvidencijaRada.Controllers
             {
                 e = _context.Projekt.Find(sifra);
             }
-            catch (Exception ex) 
-            { 
-                return BadRequest(new {poruka = ex.Message});
+            catch (Exception ex)
+            {
+                return BadRequest(new { poruka = ex.Message });
             }
             if (e == null)
             {
@@ -80,21 +85,24 @@ namespace CsharpApi_EvidencijaRada.Controllers
 
 
 
-                
+
         }
 
 
-        [HttpPost]
+        //[HttpPost]
         //public IActionResult Post(Projekt projekt)
         //{
         //    _context.Projekt.Add(projekt);
         //    _context.SaveChanges();
         //    return StatusCode(StatusCodes.Status201Created, projekt);
         //}
-        public IActionResult Post(ProjektDTORead projektDTO)
+        [HttpPost]
+        public IActionResult Post(ProjektDTOInsertUpdate projektDTO)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
+                return BadRequest(new {poruka = ModelState});
+            }
                 try
                 {
                     var e = _mapper.Map<Projekt>(projektDTO);
@@ -102,41 +110,106 @@ namespace CsharpApi_EvidencijaRada.Controllers
                     _context.SaveChanges();
                     return StatusCode(StatusCodes.Status201Created, _mapper.Map<ProjektDTORead>(e));
                 }
-                catch (Exception ex) 
+                catch (Exception ex)
                 {
-                    return BadRequest(new {poruka = ex.Message});
+                    return BadRequest(new { poruka = ex.Message });
                 }
-                
+
             }
         }
 
 
+        //[HttpPut]
+        //[Route("{sifra:int}")]
+        //[Produces("application/json")]
+        //public IActionResult Put(int sifra, Projekt projekt)
+        //{
+        //    var projektIzBaze = _context.Projekt.Find(sifra);
+
+        //    projektIzBaze.Naziv = projekt.Naziv;
+        //    projektIzBaze.Klijent = projekt.Klijent;
+
+        //    _context.Projekt.Update(projektIzBaze);
+        //    _context.SaveChanges();
+
+        //    return Ok(new { poruka = "Uspješno promjenjeno" });
+        //}
+
         [HttpPut]
         [Route("{sifra:int}")]
         [Produces("application/json")]
-        public IActionResult Put(int sifra, Projekt projekt)
+        public IActionResult Put(int sifra, ProjektDTOInsertUpdate projektDTO)
         {
-            var projektIzBaze = _context.Projekt.Find(sifra);
+            if (ModelState.IsValid)
+            {
+                return BadRequest(new { poruka = ModelState });
+            }
+            try
+            {
+                Projekt? e;
+                try
+                {
+                    e = _context.Projekt.Find(sifra);
+                }
+                catch (Exception ex) 
+                {
+                    return BadRequest(new { poruka = ex.Message });
+                }
+                if (e == null)
+                {
+                    return NotFound(new { poruka = "Projekt ne postoji u bazi" });
+                }
 
-            projektIzBaze.Naziv = projekt.Naziv;
-            projektIzBaze.Klijent = projekt.Klijent;
+                e = _mapper.Map(projektDTO, e);
 
-            _context.Projekt.Update(projektIzBaze);
-            _context.SaveChanges();
+                _context.Projekt.Update(e);
+                _context.SaveChanges();
 
-            return Ok(new { poruka = "Uspješno promjenjeno" });
-        }
-
+                return Ok(new { poruka = "Uspješno promjenjeno" });
+            }
+            catch (Exception ex) 
+            {
+                return BadRequest(new { poruka= ex.Message });
+            }
+    }
 
         [HttpDelete]
         [Route("{sifra:int}")]
         [Produces("application/json")]
         public IActionResult Delete(int sifra)
         {
-            var projektIzBaze = (_context.Projekt.Find(sifra));
-            _context.Projekt.Remove(projektIzBaze);
-            _context.SaveChanges();
-            return Ok(new { poruka = "Uspješno obrisano"});
+            //var projektIzBaze = (_context.Projekt.Find(sifra));
+            //_context.Projekt.Remove(projektIzBaze);
+            //_context.SaveChanges();
+            //return Ok(new { poruka = "Uspješno obrisano"});
+
+            if (ModelState.IsValid)
+            {
+                return BadRequest(new { poruka = ModelState });
+            }
+            try
+            {
+                Projekt? e;
+                try
+                {
+                    e = _context.Projekt.Find(sifra);
+                }
+                catch (Exception ex)
+                {
+                    return BadRequest(new { poruka = ex.Message });
+                }
+                if (e == null)
+                {
+                    return NotFound("Projekt ne postoji u bazi");
+                }
+                _context.Projekt.Remove(e);
+                _context.SaveChanges();
+                return Ok(new { poruka = "Uspješno obrisano" });
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { poruka = ex.Message });
+            }
         }
 
 
