@@ -12,6 +12,10 @@ namespace CsharpApi_EvidencijaRada.Mapping
             CreateMap<Projekt, ProjektDTORead>();
             CreateMap<ProjektDTORead, Projekt>();
             CreateMap<ProjektDTOInsertUpdate, Projekt>();
+
+            CreateMap<Djelatnik, DjelatnikDTORead>();
+            CreateMap<DjelatnikDTORead, Djelatnik>();
+            CreateMap<DjelatnikDTOInsertUpdate, Djelatnik>();
         }
             
     }
