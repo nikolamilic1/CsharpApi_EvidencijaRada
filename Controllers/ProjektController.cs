@@ -3,33 +3,17 @@ using CsharpApi_EvidencijaRada.Data;
 using CsharpApi_EvidencijaRada.Models;
 using CsharpApi_EvidencijaRada.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Microsoft.EntityFrameworkCore;
 
 namespace CsharpApi_EvidencijaRada.Controllers
 {
 
     [ApiController]
     [Route("api/v1/[controller]")]
-    //public class ProjektController:ControllerBase
-    //{
-    //    // dependency injection
 
-    //    private readonly EvidencijaContext _context;
-
-    //    public ProjektController(EvidencijaContext context)
-    //    {
-    //        _context = context;
-    //    }
     public class ProjektController(EvidencijaContext context, IMapper mapper) : EvidencijaController(context, mapper)
     {
-
-
-
-        //// RUTE
-        //[HttpGet]
-        //public IActionResult Get()
-        //{
-        //    return Ok(_context.Projekt);
-        //}
 
 
         // RUTE
@@ -52,13 +36,6 @@ namespace CsharpApi_EvidencijaRada.Controllers
         }
 
 
-
-        //[HttpGet]
-        //[Route("{sifra:int}")]
-        //public IActionResult GetBySifra(int sifra)
-        //{
-        //    return Ok(_context.Projekt.Find(sifra));
-        //}
         [HttpGet]
         [Route("{sifra:int}")]
         public ActionResult<ProjektDTORead> GetBySifra(int sifra)
@@ -82,65 +59,38 @@ namespace CsharpApi_EvidencijaRada.Controllers
             }
             return Ok(_mapper.Map<ProjektDTORead>(e));
 
-
-
-
-
         }
 
 
-        //[HttpPost]
-        //public IActionResult Post(Projekt projekt)
-        //{
-        //    _context.Projekt.Add(projekt);
-        //    _context.SaveChanges();
-        //    return StatusCode(StatusCodes.Status201Created, projekt);
-        //}
         [HttpPost]
         public IActionResult Post(ProjektDTOInsertUpdate projektDTO)
         {
             if (!ModelState.IsValid)
             {
-                return BadRequest(new {poruka = ModelState});
+                return BadRequest(new { poruka = ModelState });
             }
-                try
-                {
-                    var e = _mapper.Map<Projekt>(projektDTO);
-                    _context.Projekt.Add(e);
-                    _context.SaveChanges();
-                    return StatusCode(StatusCodes.Status201Created, _mapper.Map<ProjektDTORead>(e));
-                }
-                catch (Exception ex)
-                {
-                    return BadRequest(new { poruka = ex.Message });
-                }
+            try
+            {
+                var e = _mapper.Map<Projekt>(projektDTO);
+                _context.Projekt.Add(e);
+                _context.SaveChanges();
+                return StatusCode(StatusCodes.Status201Created, _mapper.Map<ProjektDTORead>(e));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { poruka = ex.Message });
+            }
 
-            }
         }
 
 
-        //[HttpPut]
-        //[Route("{sifra:int}")]
-        //[Produces("application/json")]
-        //public IActionResult Put(int sifra, Projekt projekt)
-        //{
-        //    var projektIzBaze = _context.Projekt.Find(sifra);
-
-        //    projektIzBaze.Naziv = projekt.Naziv;
-        //    projektIzBaze.Klijent = projekt.Klijent;
-
-        //    _context.Projekt.Update(projektIzBaze);
-        //    _context.SaveChanges();
-
-        //    return Ok(new { poruka = "Uspješno promjenjeno" });
-        //}
 
         [HttpPut]
         [Route("{sifra:int}")]
         [Produces("application/json")]
         public IActionResult Put(int sifra, ProjektDTOInsertUpdate projektDTO)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest(new { poruka = ModelState });
             }
@@ -151,7 +101,7 @@ namespace CsharpApi_EvidencijaRada.Controllers
                 {
                     e = _context.Projekt.Find(sifra);
                 }
-                catch (Exception ex) 
+                catch (Exception ex)
                 {
                     return BadRequest(new { poruka = ex.Message });
                 }
@@ -159,7 +109,6 @@ namespace CsharpApi_EvidencijaRada.Controllers
                 {
                     return NotFound(new { poruka = "Projekt ne postoji u bazi" });
                 }
-
                 e = _mapper.Map(projektDTO, e);
 
                 _context.Projekt.Update(e);
@@ -167,21 +116,18 @@ namespace CsharpApi_EvidencijaRada.Controllers
 
                 return Ok(new { poruka = "Uspješno promjenjeno" });
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-                return BadRequest(new { poruka= ex.Message });
+                return BadRequest(new { poruka = ex.Message });
             }
-    }
+        }
+
 
         [HttpDelete]
         [Route("{sifra:int}")]
         [Produces("application/json")]
         public IActionResult Delete(int sifra)
         {
-            //var projektIzBaze = (_context.Projekt.Find(sifra));
-            //_context.Projekt.Remove(projektIzBaze);
-            //_context.SaveChanges();
-            //return Ok(new { poruka = "Uspješno obrisano"});
 
             if (ModelState.IsValid)
             {
@@ -211,6 +157,11 @@ namespace CsharpApi_EvidencijaRada.Controllers
                 return BadRequest(new { poruka = ex.Message });
             }
         }
+
+
+
+
+
 
 
 
