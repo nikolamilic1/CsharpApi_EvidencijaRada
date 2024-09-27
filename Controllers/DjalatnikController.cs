@@ -1,77 +1,44 @@
-﻿using CsharpApi_EvidencijaRada.Data;
+﻿using AutoMapper;
+using CsharpApi_EvidencijaRada.Data;
 using CsharpApi_EvidencijaRada.Models;
+using CsharpApi_EvidencijaRada.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CsharpApi_EvidencijaRada.Controllers
 {
+
     [ApiController]
     [Route("api/v1/[controller]")]
-    public class DjalatnikController : ControllerBase
+    public class DjelatnikController(EvidencijaContext context, IMapper mapper) : EvidencijaController(context, mapper)
     {
-
-        private readonly EvidencijaContext _context;
-
-
-        public DjalatnikController(EvidencijaContext context)
-        {
-            _context = context;
-        }
-
-
         // RUTE
-
         [HttpGet]
-        public IActionResult Get()
+        public ActionResult<List<DjelatnikDTORead>> Get()
         {
-            return Ok(_context.Djelatnik);
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(new { poruka = ModelState });
+            }
+            try
+            {
+                return Ok(_mapper.Map<List<DjelatnikDTORead>>(_context.Djelatnik));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new { poruka = ex.Message });
+            }
         }
 
-        [HttpGet]
-        [Route("{sifra:int}")]
-        public IActionResult GetBySifra(int sifra)
-        {
-            return Ok(_context.Djelatnik.Find(sifra));
-        }
 
-        [HttpPost]
-        public IActionResult Post(Djelatnik djelatnik)
-        {
-            _context.Djelatnik.Add(djelatnik);
-            _context.SaveChanges();
-            return StatusCode(StatusCodes.Status201Created, djelatnik);
-        }
 
-        [HttpPut]
-        [Route("{sifra:int}")]
-        [Produces("application/json")]
-        public IActionResult Put(int sifra, Djelatnik djelatnik)
-        {
-            var djelatnikIzBaze = _context.Djelatnik.Find(sifra);
 
-            djelatnikIzBaze.Ime = djelatnik.Ime;
-            djelatnikIzBaze.Prezime = djelatnik.Prezime;
-            djelatnikIzBaze.Email = djelatnik.Email;
 
-            _context.Djelatnik.Update(djelatnikIzBaze);
-            _context.SaveChanges();
 
-            return Ok(new { poruka = "Uspješno promjenjeno" });
-        }
-
-        [HttpDelete]
-        [Route("{sifra:int}")]
-        [Produces("application/json")]
-        public IActionResult Delete(int sifra)
-        {
-            var djelatnikIzBaze = (_context.Djelatnik.Find(sifra));
-            _context.Djelatnik.Remove(djelatnikIzBaze);
-            _context.SaveChanges();
-            return Ok(new { poruka = "Uspješno obrisano" });
-        }
 
 
 
 
 
     }
+
 }
