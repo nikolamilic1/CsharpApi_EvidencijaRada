@@ -33,6 +33,18 @@ export default function DjelatniciPromjena(){
         navigate(RoutesNames.DJELATNIK_PREGLED);
     }
 
+    function obradiSubmit(e){ // e predstavlja event
+        e.preventDefault();
+
+        const podaci = new FormData(e.target);
+
+        promjena({
+            ime: podaci.get('ime'),
+            prezime: podaci.get('prezime'),
+            email: podaci.get('email')
+        });
+    }
+
 
 
 
