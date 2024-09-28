@@ -55,7 +55,7 @@ namespace CsharpApi_EvidencijaRada.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post(DjelatnikDTOInsertUpdate djelatnikDTO)
+        public IActionResult Post(DjelatnikDTOInsertUpdate dto)
         {
             if (!ModelState.IsValid)
             {
@@ -63,7 +63,7 @@ namespace CsharpApi_EvidencijaRada.Controllers
             }
             try
             {
-                var e = _mapper.Map<Djelatnik>(djelatnikDTO);
+                var e = _mapper.Map<Djelatnik>(dto);
                 _context.Djelatnik.Add(e);
                 _context.SaveChanges();
                 return StatusCode(StatusCodes.Status201Created, _mapper.Map<DjelatnikDTORead>(e));
@@ -78,7 +78,7 @@ namespace CsharpApi_EvidencijaRada.Controllers
         [HttpPut]
         [Route("{sifra:int}")]
         [Produces("application/json")]
-        public IActionResult Put(int sifra, DjelatnikDTOInsertUpdate djelatnikDTO)
+        public IActionResult Put(int sifra, DjelatnikDTOInsertUpdate dto)
         {
             if (!ModelState.IsValid)
             {
@@ -100,7 +100,7 @@ namespace CsharpApi_EvidencijaRada.Controllers
                     return NotFound(new { poruka = "Djelatnik ne postoji u bazi" });
                 }
 
-                e = _mapper.Map(djelatnikDTO, e);
+                e = _mapper.Map(dto, e);
 
                 _context.Djelatnik.Update(e);
                 _context.SaveChanges();
