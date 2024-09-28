@@ -63,7 +63,7 @@ namespace CsharpApi_EvidencijaRada.Controllers
 
 
         [HttpPost]
-        public IActionResult Post(ProjektDTOInsertUpdate projektDTO)
+        public IActionResult Post(ProjektDTOInsertUpdate dto)
         {
             if (!ModelState.IsValid)
             {
@@ -71,7 +71,7 @@ namespace CsharpApi_EvidencijaRada.Controllers
             }
             try
             {
-                var e = _mapper.Map<Projekt>(projektDTO);
+                var e = _mapper.Map<Projekt>(dto);
                 _context.Projekt.Add(e);
                 _context.SaveChanges();
                 return StatusCode(StatusCodes.Status201Created, _mapper.Map<ProjektDTORead>(e));
@@ -88,7 +88,7 @@ namespace CsharpApi_EvidencijaRada.Controllers
         [HttpPut]
         [Route("{sifra:int}")]
         [Produces("application/json")]
-        public IActionResult Put(int sifra, ProjektDTOInsertUpdate projektDTO)
+        public IActionResult Put(int sifra, ProjektDTOInsertUpdate dto)
         {
             if (!ModelState.IsValid)
             {
@@ -109,7 +109,7 @@ namespace CsharpApi_EvidencijaRada.Controllers
                 {
                     return NotFound(new { poruka = "Projekt ne postoji u bazi" });
                 }
-                e = _mapper.Map(projektDTO, e);
+                e = _mapper.Map(dto, e);
 
                 _context.Projekt.Update(e);
                 _context.SaveChanges();
