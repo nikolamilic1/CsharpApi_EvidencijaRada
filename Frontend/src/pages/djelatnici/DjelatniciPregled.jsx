@@ -51,7 +51,7 @@ export default function DjelatniciPregled(){
 
     return(
         <>
-            <Link to={RoutesNames.DJELATNIK_NOVI}>Dodaj novog djelatnika</Link>
+            <Link to={RoutesNames.DJELATNIK_NOVI}>Dodaj novog djelatnika</Link>            
             <Table striped bordered hover responsive>
                 <thead>
                     <tr>
