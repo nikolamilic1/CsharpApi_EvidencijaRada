@@ -128,7 +128,7 @@ namespace CsharpApi_EvidencijaRada.Controllers
                 Djelatnik? e;
                 try
                 {
-                    e = _context.Djelatnik(sifra);
+                    e = _context.Djelatnik.Find(sifra);
                 }
                 catch (Exception ex)
                 {
