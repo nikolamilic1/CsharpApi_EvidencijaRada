@@ -8,7 +8,7 @@ import { RoutesNames } from "../../Constants";
 
 export default function ProjektiPregled(){
 
-const[projekti,setProjekti] = useState();
+const[projekt,setProjekti] = useState();
 const navigate = useNavigate();
 
 async function dohvatiProjekte() {
@@ -39,9 +39,9 @@ function obrisi(sifra){
     obrisiAsync(sifra);
 }
 
-// useEffect(()=>{
-//     dohvatiProjekte();
-// },[]);
+useEffect(()=>{
+    dohvatiProjekte();
+},[]);
 
     return(
         <Container>
@@ -55,7 +55,7 @@ function obrisi(sifra){
                     </tr>
                 </thead>
                 <tbody>
-                    {projekti && projekti.map((projekt,index)=>(
+                    {projekt && projekt.map((projekt,index)=>(
                         <tr key={index}>
                             <td>{projekt.naziv}</td>
                             <td>{projekt.klijent}</td>
