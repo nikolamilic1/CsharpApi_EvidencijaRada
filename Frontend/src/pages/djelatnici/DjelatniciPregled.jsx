@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import DjelatnikService from "../../services/DjelatnikService";
 import { RoutesNames } from "../../Constants";
+import { useState } from "react";
 
 
 
 export default function DjelatniciPregled(){
-    const[djelatnik,setDjelatnik] = useState();
+
+    const[djelatnici,setDjelatnik] = useState();
 
     const navigate = useNavigate();
 
@@ -30,7 +32,7 @@ export default function DjelatniciPregled(){
 
     useEffect(()=>{
         dohvatiDjelatnike();
-    },[]);
+    },[]);    
 
 
 
@@ -71,7 +73,7 @@ export default function DjelatniciPregled(){
                             <td>
                             <Button
                                 variant="primary"
-                                onClick={()=>navigate(`/djelatnik/${e.sifra}`)}>
+                                onClick={()=>navigate(`/djelatnici/${e.sifra}`)}>
                                     Promjeni
                                 </Button>
                                 &nbsp;&nbsp;&nbsp;
