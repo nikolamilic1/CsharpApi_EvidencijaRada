@@ -55,7 +55,7 @@ async function promjena(sifra,Djelatnik) {
     .then((odgovor)=>{
         return {greska: false, poruka: odgovor.data}
     })
-    .catch(()=>{
+    .catch((e)=>{
         switch (e.status) {
             case 400:
                 let poruke='';
