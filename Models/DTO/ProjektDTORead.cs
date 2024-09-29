@@ -1,7 +1,7 @@
-﻿namespace CsharpApi_EvidencijaRada.Models.DTO
+﻿
+namespace CsharpApi_EvidencijaRada.Models.DTO
 {
-    public record ProjektDTORead
-    (
+    public record ProjektDTORead(
             int Sifra,
             string Naziv,
             string Klijent
