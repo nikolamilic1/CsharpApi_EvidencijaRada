@@ -2,9 +2,9 @@ import ProjektiPromjena from "../pages/projekti/ProjektiPromjena";
 import { HttpService } from "./HttpService";
 
 async function get() {
-   return await HttpService.get('/Projekt')
+   return await HttpService.get('/Projekti')
     .then((odgovor)=>{
-        // console.log(odgovor.data);   // da vidimo što se događa
+        console.log(odgovor.data);        // da vidimo što se događa
         // console.table(odgovor.data);   // stavlja u tablicu
         return odgovor.data;
     })
