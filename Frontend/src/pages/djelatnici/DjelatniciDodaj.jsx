@@ -34,7 +34,7 @@ function obradiSubmit(e){
 
 return(
     <>
-        Dodavanje novog Polaznika
+        Dodavanje novog Djelatnika
         
         <Form onSubmit={obradiSubmit}>
             <Form.Group controlId="ime">
