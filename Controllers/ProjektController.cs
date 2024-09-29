@@ -3,8 +3,6 @@ using CsharpApi_EvidencijaRada.Data;
 using CsharpApi_EvidencijaRada.Models;
 using CsharpApi_EvidencijaRada.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.ModelBinding;
-using Microsoft.EntityFrameworkCore;
 
 namespace CsharpApi_EvidencijaRada.Controllers
 {
