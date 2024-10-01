@@ -1,6 +1,6 @@
-import { Button, Container, Table } from "react-bootstrap";
+import { Button, Table } from "react-bootstrap";
 import ProjektService from "../../services/ProjektService";
-import { useEffect, useState } from "react";
+import { useEffect, useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { RoutesNames } from "../../Constants";
 
@@ -8,7 +8,10 @@ import { RoutesNames } from "../../Constants";
 
 export default function ProjektiPregled(){
 
-const[projekt,setProjekti] = useState();
+//const[projekti,setProjekti] = useState();
+
+const[projekt, setProjekt] = useState();
+
 const navigate = useNavigate();
 
 async function dohvatiProjekte() {
@@ -22,9 +25,15 @@ async function dohvatiProjekte() {
     })
     .catch((e)=>{console.log(e)});
 }
+
+
+
     useEffect(()=>{
         dohvatiProjekte();
     },[]);
+
+
+
 
 async function obrisiAsync(sifra) {
     const odgovor = await ProjektService.obrisi(sifra);
@@ -39,12 +48,12 @@ function obrisi(sifra){
     obrisiAsync(sifra);
 }
 
-useEffect(()=>{
-    dohvatiProjekte();
-},[]);
+// useEffect(()=>{
+//     dohvatiProjekte();
+// },[]);
 
     return(
-        <Container>
+        <>
             <Link to={RoutesNames.PROJEKT_NOVI}>Dodaj novi projekt</Link>
             <Table striped bordered hover responsive>
                 <thead>
@@ -77,6 +86,6 @@ useEffect(()=>{
                     ))}
                 </tbody>
             </Table>
-        </Container>
+        </>
     )
 }
