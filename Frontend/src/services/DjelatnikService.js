@@ -2,7 +2,7 @@ import { HttpService } from "./HttpService";
 
 
 async function get() {
-    return await HttpService('/Djelatnik')
+    return await HttpService.get('/Djelatnik')
     .then((odgovor)=>{
         //console.table(odgovor.data);
         return odgovor.data;
@@ -13,6 +13,7 @@ async function get() {
 async function getBySifra(sifra) {
     return await HttpService.get('/Djelatnik/' + sifra)
     .then((odgovor)=>{
+        console.log(odgovor.data);
         return {greska: false, poruka: odgovor.data}
     })
     .catch(()=>{
