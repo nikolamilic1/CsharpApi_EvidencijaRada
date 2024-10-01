@@ -35,6 +35,8 @@ builder.Services.AddCors(opcije =>
 // Automapper
 builder.Services.AddAutoMapper(typeof(EvidencijaMappingProfile));
 
+
+
 var app = builder.Build();
 
 //Configure the HTTP request pipeline.
