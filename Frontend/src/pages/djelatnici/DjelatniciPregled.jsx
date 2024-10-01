@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import DjelatnikService from "../../services/DjelatnikService";
 import { RoutesNames } from "../../Constants";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 
 
