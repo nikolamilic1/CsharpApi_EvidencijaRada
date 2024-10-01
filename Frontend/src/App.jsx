@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css'
 import NavBarEvidencija from './components/NavBarEvidencija'
@@ -13,7 +12,6 @@ import DjelatniciDodaj from './pages/djelatnici/DjelatniciDodaj'
 import DjelatniciPromjena from './pages/djelatnici/DjeltniciPromjena'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <>
