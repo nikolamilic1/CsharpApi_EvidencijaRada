@@ -4,7 +4,7 @@ import { HttpService } from "./HttpService";
 async function get() {
    return await HttpService.get('/Projekti')
     .then((odgovor)=>{
-        console.log(odgovor.data);        // da vidimo što se događa
+        //console.log(odgovor.data);        // da vidimo što se događa
         // console.table(odgovor.data);   // stavlja u tablicu
         return odgovor.data;
     })
@@ -12,7 +12,7 @@ async function get() {
 }
 
 async function getBySifra(sifra) {
-    return await HttpService.get('/Projekt/' + sifra)
+    return await HttpService.get('/Projekti/' + sifra)
      .then((odgovor)=>{
         return {greska: false, poruka: odgovor.data}
          // console.log(odgovor.data);   // da vidimo što se događa
@@ -25,7 +25,7 @@ async function getBySifra(sifra) {
  }
 
 async function obrisi(sifra) {
-    return await HttpService.delete('/Projekt/' + sifra)
+    return await HttpService.delete('/Projekti/' + sifra)
     .then((odgovor)=>{
         return {greska: false, poruka: odgovor.data.poruka}
     })
@@ -35,7 +35,7 @@ async function obrisi(sifra) {
 }
 
 async function dodaj(projekt) {
-    return await HttpService.post('/Projekt', projekt)
+    return await HttpService.post('/Projekti', projekt)
     .then((odgovor)=>{
         return {greska: false, poruka: odgovor.data}
     })
@@ -55,7 +55,7 @@ async function dodaj(projekt) {
 }
 
 async function promjena(sifra, projekt) {
-    return await HttpService.put('/Projekt/' + sifra,projekt)
+    return await HttpService.put('/Projekti/' + sifra,projekt)
     .then((odgovor)=>{
         return {greska: false, poruka: odgovor.data}
     })
