@@ -1,7 +1,8 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DjelatnikService from "../../services/DjelatnikService";
 import { RoutesNames } from "../../Constants";
 import { useState, useEffect } from "react";
+import { Button, Table } from "react-bootstrap";
 
 
 
@@ -21,7 +22,7 @@ export default function DjelatniciPregled(){
             //console.log(odgovor);
             setDjelatnik(odgovor);
         })
-        .catch((e)=>{console.log(e)});
+        .catch((e)=>console.error(e));
     }
 
 
@@ -36,7 +37,7 @@ export default function DjelatniciPregled(){
 
 
 
-    async function obisiAsync(sifra) {
+    async function obrisiAsync(sifra) {
         const odgovor = await DjelatnikService.obrisi(sifra);
         //console.log(odgovor);
         if(odgovor.greska){
@@ -64,7 +65,7 @@ export default function DjelatniciPregled(){
                     </tr>
                 </thead>
                 <tbody>
-                    {djelatnik && djelatnik.map((e,index)=>(
+                    {djelatnici && djelatnici.map((e, index)=>(
                         <tr key={index}>
                             <td>{e.ime}</td>
                             <td>{e.prezime}</td>
