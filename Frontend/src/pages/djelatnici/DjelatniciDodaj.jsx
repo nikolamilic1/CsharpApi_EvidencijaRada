@@ -1,6 +1,7 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import DjelatnikService from "../../services/DjelatnikService";
 import { RoutesNames } from "../../Constants";
+import { Button, Col, Form, Row } from "react-bootstrap";
 
 
 
@@ -20,7 +21,7 @@ async function dodaj(e) {
 function obradiSubmit(e){
     e.preventDefault();
 
-    const podaci = newFormData(e.target);
+    const podaci = new FormData(e.target);
 
     dodaj({
         ime: podaci.get('ime'),
