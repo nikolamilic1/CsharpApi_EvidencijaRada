@@ -23,7 +23,7 @@ namespace CsharpApi_EvidencijaRada.Controllers
                 return BadRequest(new { poruka = ModelState });
             }
             try
-            {
+            {                
                 return Ok(_mapper.Map<List<ProjektDTORead>>(_context.Projekt));
             }
             catch (Exception ex)
