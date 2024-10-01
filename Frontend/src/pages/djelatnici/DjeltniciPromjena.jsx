@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import DjelatnikService from "../../services/DjelatnikService";
 import { RoutesNames } from "../../Constants";
+import { Button, Col, Form, Row } from "react-bootstrap";
 
 
 
@@ -11,7 +12,7 @@ export default function DjelatniciPromjena(){
     const routeParams = useParams();
     const [djelatnik,setDjelatnik] = useState({});
 
-    async function dohvatiProjekt() {
+    async function dohvatiDjelatnik() {
         const odgovor = await DjelatnikService.getBySifra(routeParams.sifra);
         if(odgovor.greska){
             alert(odgovor.poruka);
@@ -25,7 +26,7 @@ export default function DjelatniciPromjena(){
     },[]);
 
     async function promjena(e) {
-        const odgovor = await DjelatnikService.promjena(routeParams.sifra.e);
+        const odgovor = await DjelatnikService.promjena(routeParams.sifra,e);
         if(odgovor.greska){
             alert(odgovor.poruka);
             return;
