@@ -10,7 +10,7 @@ export default function ProjektiPregled(){
 
 //const[projekti,setProjekti] = useState();
 
-const[projekt, setProjekt] = useState();
+const[projekti, setProjekti] = useState();
 
 const navigate = useNavigate();
 
@@ -64,7 +64,7 @@ function obrisi(sifra){
                     </tr>
                 </thead>
                 <tbody>
-                    {projekt && projekt.map((projekt,index)=>(
+                    {projekti && projekti.map((projekt,index)=>(
                         <tr key={index}>
                             <td>{projekt.naziv}</td>
                             <td>{projekt.klijent}</td>
