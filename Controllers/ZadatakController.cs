@@ -1,8 +1,9 @@
 ﻿using AutoMapper;
 using CsharpApi_EvidencijaRada.Data;
 using CsharpApi_EvidencijaRada.Models;
+using CsharpApi_EvidencijaRada.Models.DTO;
 using Microsoft.AspNetCore.Mvc;
-using System.Text.RegularExpressions;
+using Microsoft.EntityFrameworkCore;
 
 namespace CsharpApi_EvidencijaRada.Controllers
 {
@@ -45,7 +46,7 @@ namespace CsharpApi_EvidencijaRada.Controllers
             try
             {
 
-                e = _context.Zadatak.Include(g => g.Zadatak).FirstOrDefault(g => g.Sifra == sifra);
+                e = _context.Zadatak.Include(g => g.Projekt).FirstOrDefault(g => g.Sifra == sifra);
             }
             catch (Exception ex)
             {
@@ -72,7 +73,7 @@ namespace CsharpApi_EvidencijaRada.Controllers
             Projekt? es;
             try
             {
-                es = _context.Projekt.Find(dto.SmjerSifra);
+                es = _context.Projekt.Find(dto.ProjektSifra);
             }
             catch (Exception ex)
             {
@@ -128,7 +129,7 @@ namespace CsharpApi_EvidencijaRada.Controllers
                 Projekt? es;
                 try
                 {
-                    es = _context.Projekt.Find(dto.SmjerSifra);
+                    es = _context.Projekt.Find(dto.ProjektSifra);
                 }
                 catch (Exception ex)
                 {
