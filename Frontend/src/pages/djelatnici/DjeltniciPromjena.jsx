@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import DjelatnikService from "../../services/DjelatnikService";
 import { RoutesNames } from "../../Constants";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 
 
 
@@ -49,8 +49,9 @@ export default function DjelatniciPromjena(){
 
     return(
         <>
-            Promjena Polaznika
-            
+        <Container>
+        Promjena djelatnika
+        <hr />
             <Form onSubmit={obradiSubmit}>
             <Form.Group controlId="ime">
                     <Form.Label>Ime</Form.Label>
@@ -82,6 +83,8 @@ export default function DjelatniciPromjena(){
                     </Col>
                 </Row>
             </Form>
+        </Container>
+            
         </>
     )
 
