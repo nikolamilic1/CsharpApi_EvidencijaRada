@@ -16,6 +16,17 @@ namespace CsharpApi_EvidencijaRada.Mapping
             CreateMap<Djelatnik, DjelatnikDTORead>();
             CreateMap<DjelatnikDTORead, Djelatnik>();
             CreateMap<DjelatnikDTOInsertUpdate, Djelatnik>();
+
+            CreateMap<Zadatak, ZadatakDTORead>()
+                .ForMember(
+                dest => dest.ProjektNaziv,
+                opt => opt.MapFrom(src => src.Projekt.Naziv)
+                );
+            CreateMap<Zadatak, ZadatakDTOInsertUpdate>().ForMember(
+                dest => dest.ProjektSifra,
+                opt => opt.MapFrom(src => src.Projekt.Sifra)
+                );
+            CreateMap<ZadatakDTOInsertUpdate, Zadatak>();
         }
             
     }
