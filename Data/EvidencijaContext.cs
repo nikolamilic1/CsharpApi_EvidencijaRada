@@ -23,6 +23,18 @@ namespace CsharpApi_EvidencijaRada.Data
         {
             //implementacija veze 1:n
             modelBuilder.Entity<Zadatak>().HasOne(g => g.Projekt);
+
+
+            //implementacija veze n:n
+            modelBuilder.Entity<Zadatak>()
+                .HasMany(g => g.Djelatnik)
+                .WithMany(p => p.Zadatak)
+                .UsingEntity<Dictionary<string, object>>("evidencija_rada",
+                c => c.HasOne<Djelatnik>().WithMany().HasForeignKey("djelatnik"),
+                c => c.HasOne<Zadatak>().WithMany().HasForeignKey("zadatak"),
+                c => c.ToTable("evidencija_rada")
+                );
+
         }
 
 
