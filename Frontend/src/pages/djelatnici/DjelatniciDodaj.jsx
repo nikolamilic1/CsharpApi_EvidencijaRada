@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import DjelatnikService from "../../services/DjelatnikService";
 import { RoutesNames } from "../../Constants";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 
 
 
@@ -35,8 +35,9 @@ function obradiSubmit(e){
 
 return(
     <>
-        Dodavanje novog Djelatnika
-        
+    <Container>
+    Dodavanje novog Djelatnika
+        <hr/>
         <Form onSubmit={obradiSubmit}>
             <Form.Group controlId="ime">
                 <Form.Label>Ime</Form.Label>
@@ -71,6 +72,8 @@ return(
                 </Col>
             </Row>
         </Form>
+    </Container>
+       
     </>
 )
 }
