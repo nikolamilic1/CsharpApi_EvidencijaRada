@@ -17,6 +17,14 @@ namespace CsharpApi_EvidencijaRada.Data
 
         public DbSet<Djelatnik> Djelatnik { get; set; }
 
-        
+        public DbSet<Zadatak> Zadatak { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            //implementacija veze 1:n
+            modelBuilder.Entity<Zadatak>().HasOne(g => g.Projekt);
+        }
+
+
     }
 }
