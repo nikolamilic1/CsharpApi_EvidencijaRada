@@ -21,11 +21,7 @@ export default function NavBarEvidencija() {
             <NavDropdown title="Programi" id="basic-nav-dropdown">
               <NavDropdown.Item onClick={()=>navigate(RoutesNames.PROJEKT_PREGLED)}>Projekti</NavDropdown.Item>
               <NavDropdown.Item onClick={()=>navigate(RoutesNames.DJELATNIK_PREGLED)}>Djelatnici</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
+              <NavDropdown.Item onClick={()=>navigate(RoutesNames.ZADATAK_PREGLED)}>Zadaci</NavDropdown.Item>                           
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
