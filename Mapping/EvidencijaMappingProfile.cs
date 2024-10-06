@@ -10,11 +10,11 @@ namespace CsharpApi_EvidencijaRada.Mapping
         {
             //kreiranje mapiranja: izvor, odredište
             CreateMap<Projekt, ProjektDTORead>();
-            CreateMap<ProjektDTORead, Projekt>();
+          //  CreateMap<ProjektDTORead, Projekt>();
             CreateMap<ProjektDTOInsertUpdate, Projekt>();
 
             CreateMap<Djelatnik, DjelatnikDTORead>();
-            CreateMap<DjelatnikDTORead, Djelatnik>();
+         //   CreateMap<DjelatnikDTORead, Djelatnik>();
             CreateMap<DjelatnikDTOInsertUpdate, Djelatnik>();
 
             CreateMap<Zadatak, ZadatakDTORead>()
