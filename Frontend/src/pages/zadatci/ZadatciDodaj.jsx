@@ -16,7 +16,7 @@ export default function ZadatciDodaj() {
     const [projekti, setProjekti] = useState([]);
     const [projektSifra, setProjektSifra] = useState(0);
 
-    const [zadatak, setZadatak] = useState({});
+   // const [zadatak, setZadatak] = useState({});
 
     async function dohvatiProjekte() {
         const odgovor =await ProjektService.get();
@@ -38,7 +38,7 @@ export default function ZadatciDodaj() {
         navigate(RoutesNames.ZADATAK_PREGLED);
     }
 
-    function obradiSubmite(e) {
+    function obradiSubmit(e) {
         e.preventDefault();
 
         const podaci = new FormData(e.target);
