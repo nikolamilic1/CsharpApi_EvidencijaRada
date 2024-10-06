@@ -70,6 +70,15 @@ async function promjena(sifra,Djelatnik) {
     })
 }
 
+// async function traziDjelatnik(uvjet) {
+//     return await HttpService.get('/Djelatnik/trazi/'+uvjet)
+//     then((odgovor)=>{
+//         //console.table(odgovor.data);
+//         return {greska: false, poruka: odgovor.data}
+//     })
+//     .catch((e)=>{return {greska: true, poruka: 'Problem kod traženja djalatnika'}})
+// }
+
 export default{
     get,
     getBySifra,
