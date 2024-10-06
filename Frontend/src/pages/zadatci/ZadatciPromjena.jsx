@@ -68,25 +68,21 @@ export default function ZadaciPromjena() {
       opis: podaci.get('opis')
     });
         
-      }
-return (
-<>
-Mjenjanje podataka zadatka
+  }
+  return (
+  <>
+    Mjenjanje podataka zadatka
 
 <Form onSubmit={obradiSubmit}>
           <Form.Group controlId="naziv">
               <Form.Label>Naziv</Form.Label>
               <Form.Control type="text" name="naziv" required defaultValue={zadatak.naziv}/>
-          </Form.Group>
-
-          // pocetak   pogledati Smjerovi/SmjeroviPromjena za format datuma
+          </Form.Group>          
           <Form.Group controlId="pocetak">
                     <Form.Label>Izvodi se od</Form.Label>
                     <Form.Control type="date" name="pocetak"  
                     defaultValue={zadatak.pocetak}/>
-                </Form.Group>
-
-          // zavrsetak   pogledati Smjerovi/SmjeroviPromjena za format datuma
+                </Form.Group>          
           <Form.Group controlId="zavrsetak">
                     <Form.Label>Izvodi se od</Form.Label>
                     <Form.Control type="date" name="zavrsetak"  
@@ -106,7 +102,7 @@ Mjenjanje podataka zadatka
             ))}
             </Form.Select>
           </Form.Group>
-                // mislim da ne treba required ispred defaultValue 
+                 
           <Form.Group controlId="opis">
               <Form.Label>Opis zadatka</Form.Label>
               <Form.Control type="text" name="opis" required defaultValue={zadatak.opis}/>
