@@ -16,9 +16,9 @@ export default function ZadatakPregled(){
        await Service.get()
        .then((odgovor)=>{
         //console.log(odgovor);
-        setZadaci;
+        setZadaci(odgovor);
        })
-        .catch((e)=>{console.log(e)})
+        .catch((e)=>{console.log(e)});
     }
 
     async function obrisiZadatak(sifra) {
