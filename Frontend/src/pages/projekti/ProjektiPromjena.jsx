@@ -10,7 +10,9 @@ export default function ProjektiPromjena(){
 
     const navigate = useNavigate();
     const routeParams = useParams();
+
     const [projekt,setProjekt] = useState({});
+     
 
     async function dohvatiProjekt() {
         const odgovor = await ProjektService.getBySifra(routeParams.sifra);
