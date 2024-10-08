@@ -32,8 +32,8 @@ export default function ZadaciPromjena() {
     let zadatak = odgovor.poruka;
     setZadatak(zadatak);
     setProjektSifra(zadatak.projektSifra); 
-
     }
+
 
     async function dohvatiInicijalnePodatke() {
         await dohvatiProjekt();
@@ -51,7 +51,7 @@ export default function ZadaciPromjena() {
       alert(odgovor.poruka);
       return;
     }
-    navigate(RoutesNames.PROJEKT_PREGLED);
+    navigate(RoutesNames.ZADATAK_PREGLED);
       }
 
       function obradiSubmit(e) {
