@@ -11,8 +11,8 @@ DJELATNIK_PROMJENA: '/djelatnici/:sifra',
 
 ZADATAK_PREGLED: '/zadatak',
 ZADATAK_NOVI: '/zadatak/dodaj',
-ZADATAK_PROMJENA: '/zadatak/:sifra',
+ZADATAK_PROMJENA: '/zadatak/:sifra'
 };
 
 //export const BECKEND_URL = 'https://nikolamilic1-001-site1.htempurl.com/api/v1';
-export const BECKEND_URL = 'http://localhost:5173/api/v1';
+export const BECKEND_URL = 'https://localhost:7220/api/v1';

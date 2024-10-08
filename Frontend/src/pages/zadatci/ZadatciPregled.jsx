@@ -69,18 +69,18 @@ export default function ZadatakPregled(){
                                         onClick={()=>{navigate(`/zadatak/${entitet.sifra}`)}}
                                     >
                                         <FaEdit 
-                                    size={25}
+                                    size={20}
                                     />
                                     </Button>
                                
-                                
-                                    &nbsp;&nbsp;&nbsp;
+                                    
+                                    &nbsp;
                                     <Button
                                         variant='danger'
                                         onClick={() => obrisiZadatak(entitet.sifra)}
                                     >
                                         <FaTrash
-                                        size={25}/>
+                                        size={20}/>
                                     </Button>
 
                             </td>
