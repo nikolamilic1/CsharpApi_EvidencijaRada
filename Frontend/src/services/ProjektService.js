@@ -18,7 +18,7 @@ async function getBySifra(sifra) {
          // console.table(odgovor.data);   // stavlja u tablicu
          //return odgovor.data;
      })
-     .catch((e)=>{
+     .catch(()=>{
         return {greska: true, poruka: 'Ne postoji projekt'}    
     })
  }
@@ -28,7 +28,7 @@ async function obrisi(sifra) {
     .then((odgovor)=>{
         return {greska: false, poruka: odgovor.data.poruka}
     })
-    .catch((e)=>{
+    .catch(()=>{
         return {greska: true, poruka: 'Projekt se ne može obrisati!'}
     })
 }
