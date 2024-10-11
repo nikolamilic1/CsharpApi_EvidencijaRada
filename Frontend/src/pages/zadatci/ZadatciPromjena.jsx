@@ -4,6 +4,7 @@ import ProjektService from "../../services/ProjektService";
 import { RoutesNames } from "../../Constants";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import Service from '../../services/ZadatakService';
+// import moment from "moment/moment";
 
 
 
@@ -18,9 +19,20 @@ export default function ZadaciPromjena() {
     const [zadatak, setZadatak] = useState({});
 
     async function dohvatiProjekt() {
-        const odgovor = await ProjektService.get();
-    setProjekt(odgovor);
+        const odgovor = await ProjektService.getBySifra(routeParams.sifra);
+        setProjekt(odgovor);
     }
+       // if(odgovor.greska){
+         // alert(odgovor.poruka);
+         // return;
+      //  }
+    //     odgovor.poruka.pocetak = moment.utc(odgovor.poruka.pocetak).format('yyyy-MM-DD');
+    // setProjekt(odgovor.poruka);
+    //}
+    // useEffect(()=>{
+    //   dohvatiProjekt();
+    // },[]);
+
 
 
     async function dohvatiZadatak() {
@@ -32,8 +44,8 @@ export default function ZadaciPromjena() {
     let zadatak = odgovor.poruka;
     setZadatak(zadatak);
     setProjektSifra(zadatak.projektSifra); 
-
     }
+
 
     async function dohvatiInicijalnePodatke() {
         await dohvatiProjekt();
@@ -51,7 +63,7 @@ export default function ZadaciPromjena() {
       alert(odgovor.poruka);
       return;
     }
-    navigate(RoutesNames.PROJEKT_PREGLED);
+    navigate(RoutesNames.ZADATAK_PREGLED);
       }
 
       function obradiSubmit(e) {

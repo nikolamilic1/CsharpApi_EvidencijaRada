@@ -1,4 +1,4 @@
-import { HttpService } from "./HttpService";
+import { HttpService } from "./HttpService"
 
 async function get() {
    return await HttpService.get('/Projekt')
@@ -18,7 +18,7 @@ async function getBySifra(sifra) {
          // console.table(odgovor.data);   // stavlja u tablicu
          //return odgovor.data;
      })
-     .catch((e)=>{
+     .catch(()=>{
         return {greska: true, poruka: 'Ne postoji projekt'}    
     })
  }
@@ -26,9 +26,10 @@ async function getBySifra(sifra) {
 async function obrisi(sifra) {
     return await HttpService.delete('/Projekt/' + sifra)
     .then((odgovor)=>{
-        return {greska: false, poruka: odgovor.data.poruka}
+        console.log(odgovor);
+        return {greska: false, poruka: odgovor.data}
     })
-    .catch((e)=>{
+    .catch(()=>{
         return {greska: true, poruka: 'Projekt se ne može obrisati!'}
     })
 }
