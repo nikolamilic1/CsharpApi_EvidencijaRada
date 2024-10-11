@@ -8,9 +8,9 @@ import { RoutesNames } from "../../Constants";
 
 export default function ProjektiPregled(){
 
-//const[projekti,setProjekti] = useState();
+const[projekti,setProjekti] = useState();
 
-const[projekt, setProjekt] = useState();
+//const[projekt, setProjekt] = useState();
 
 const navigate = useNavigate();
 
@@ -21,7 +21,7 @@ async function dohvatiProjekte() {
     
     await ProjektService.get()
     .then((odgovor)=>{
-        setProjekt(odgovor);
+        setProjekti(odgovor);
     })
     .catch((e)=>{console.log(e)});
 }
@@ -64,7 +64,7 @@ function obrisi(sifra){
                     </tr>
                 </thead>
                 <tbody>
-                    {projekt && projekt.map((projekt,index)=>(
+                    {projekti && projekti.map((projekt,index)=>(
                         <tr key={index}>
                             <td>{projekt.naziv}</td>
                             <td>{projekt.klijent}</td>
