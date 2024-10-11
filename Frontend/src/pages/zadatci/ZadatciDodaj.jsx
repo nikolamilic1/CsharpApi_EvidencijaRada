@@ -63,18 +63,20 @@ export default function ZadatciDodaj() {
               <Form.Control type="text" name="naziv" required />
           </Form.Group>          
 
-          -- (pocetak    ----pogledati Smjerovi/SmjeroviPromjena za format datuma)
+          
           <Form.Group controlId="pocetak">
                     <Form.Label>Početak:</Form.Label>
                     <Form.Control type="date" name="pocetak"  
-                    defaultValue={zadatak.pocetak}/>
+                   // defaultValue={zadatak.pocetak}
+                   />
                 </Form.Group>
 
-         -- zavrsetak   ----pogledati Smjerovi/SmjeroviPromjena za format datuma
+         
           <Form.Group controlId="zavrsetak">
                     <Form.Label>Zadatak završava:</Form.Label>
                     <Form.Control type="date" name="zavrsetak"  
-                    defaultValue={zadatak.zavrsetak}/>
+                  //  defaultValue={zadatak.zavrsetak}
+                  />
                 </Form.Group>
 
                 <Form.Group className='mb-3' controlId='projekt'>

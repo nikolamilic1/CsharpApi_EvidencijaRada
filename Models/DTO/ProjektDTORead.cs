@@ -5,5 +5,7 @@ namespace CsharpApi_EvidencijaRada.Models.DTO
             int Sifra,
             string Naziv,
             string Klijent
+ 
+
     );
 }

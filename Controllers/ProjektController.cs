@@ -127,7 +127,7 @@ namespace CsharpApi_EvidencijaRada.Controllers
         public IActionResult Delete(int sifra)
         {
 
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest(new { poruka = ModelState });
             }

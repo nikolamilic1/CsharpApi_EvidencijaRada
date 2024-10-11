@@ -6,6 +6,10 @@ namespace CsharpApi_EvidencijaRada.Models.DTO
         [Required(ErrorMessage = "Naziv obavezno")]
         string Naziv,
         [Required(ErrorMessage = "Klijent obavezno")]
-        string Klijent
+        string Klijent,
+        DateTime Pocetak,
+        DateTime Zavrsetak,
+        int ProjektNaziv,
+        string Opis
         );
 }

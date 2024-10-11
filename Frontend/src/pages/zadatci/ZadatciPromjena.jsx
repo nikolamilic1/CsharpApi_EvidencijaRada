@@ -19,7 +19,7 @@ export default function ZadaciPromjena() {
     const [zadatak, setZadatak] = useState({});
 
     async function dohvatiProjekt() {
-        const odgovor = await ProjektService.getBySifra(routeParams.sifra);
+        const odgovor = await ProjektService.get();
         setProjekt(odgovor);
     }
        // if(odgovor.greska){
@@ -91,14 +91,16 @@ export default function ZadaciPromjena() {
               <Form.Control type="text" name="naziv" required defaultValue={zadatak.naziv}/>
           </Form.Group>          
           <Form.Group controlId="pocetak">
-                    <Form.Label>Izvodi se od</Form.Label>
+                    <Form.Label>Početak zadatka</Form.Label>
                     <Form.Control type="date" name="pocetak"  
-                    defaultValue={zadatak.pocetak}/>
+                    defaultValue={zadatak.pocetak}
+                    />
                 </Form.Group>          
           <Form.Group controlId="zavrsetak">
-                    <Form.Label>Izvodi se od</Form.Label>
+                    <Form.Label>Završetak zadatka</Form.Label>
                     <Form.Control type="date" name="zavrsetak"  
-                    defaultValue={zadatak.zavrsetak}/>
+                    defaultValue={zadatak.zavrsetak}
+                    />
                 </Form.Group>
 
           <Form.Group className='mb-3' controlId='projekt'>
