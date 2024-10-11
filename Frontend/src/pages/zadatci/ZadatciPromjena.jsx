@@ -4,7 +4,7 @@ import ProjektService from "../../services/ProjektService";
 import { RoutesNames } from "../../Constants";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import Service from '../../services/ZadatakService';
-import moment from "moment/moment";
+// import moment from "moment/moment";
 
 
 
@@ -13,23 +13,25 @@ export default function ZadaciPromjena() {
     const navigate = useNavigate();
     const routeParams = useParams();
 
-    const [projekt, setProjekt] = useState({});
+    const [projekt, setProjekt] = useState([]);
     const [projektSifra, setProjektSifra] = useState(0);
 
     const [zadatak, setZadatak] = useState({});
 
     async function dohvatiProjekt() {
         const odgovor = await ProjektService.getBySifra(routeParams.sifra);
-        if(odgovor.greska){
-          alert(odgovor.poruka);
-          return;
-        }
-        odgovor.poruka.pocetak = moment.utc(odgovor.poruka.pocetak).format('yyyy-MM-DD');
-    setProjekt(odgovor.poruka);
+        setProjekt(odgovor);
     }
-    useEffect(()=>{
-      dohvatiProjekt();
-    },[]);
+       // if(odgovor.greska){
+         // alert(odgovor.poruka);
+         // return;
+      //  }
+    //     odgovor.poruka.pocetak = moment.utc(odgovor.poruka.pocetak).format('yyyy-MM-DD');
+    // setProjekt(odgovor.poruka);
+    //}
+    // useEffect(()=>{
+    //   dohvatiProjekt();
+    // },[]);
 
 
 
