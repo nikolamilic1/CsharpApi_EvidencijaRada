@@ -15,7 +15,7 @@ namespace CsharpApi_EvidencijaRada.Models
 
         public string? Opis { get; set; }
 
-        public ICollection<Djelatnik> Djelatnik { get; set; }
+        public ICollection<Djelatnik>? Djelatnik { get; set; }
 
 
     }
