@@ -1,11 +1,11 @@
 ﻿namespace CsharpApi_EvidencijaRada.Models.DTO
 {
     public record ZadatakDTORead(
-        int sifra,
+        int Sifra,
         string? Naziv,
         DateTime? Pocetak,
         DateTime? Zavrsetak,
-        string? ProjektNaziv,
+        string? Projekt,
         string? Opis
         );
     
