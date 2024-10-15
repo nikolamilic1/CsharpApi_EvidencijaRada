@@ -19,7 +19,7 @@ namespace CsharpApi_EvidencijaRada.Mapping
 
             CreateMap<Zadatak, ZadatakDTORead>()
                 .ForMember(
-                dest => dest.ProjektNaziv,
+                dest => dest.Projekt,
                 opt => opt.MapFrom(src => src.Projekt.Naziv)
                 );
             CreateMap<Zadatak, ZadatakDTOInsertUpdate>().ForMember(
