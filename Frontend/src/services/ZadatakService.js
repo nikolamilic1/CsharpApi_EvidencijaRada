@@ -32,7 +32,7 @@ async function obrisi(sifra) {
 }
 
 async function dodaj(Zadatak) {
-    return await HttpService.post('/Zadatak',Zadatak)
+    return await HttpService.post('/Zadatak', Zadatak)
     .then((odgovor)=>{
         return {greska: false, poruka: odgovor.data}
     })
