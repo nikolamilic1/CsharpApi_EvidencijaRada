@@ -1,4 +1,6 @@
-﻿namespace CsharpApi_EvidencijaRada.Models
+﻿using System.ComponentModel.DataAnnotations.Schema;
+
+namespace CsharpApi_EvidencijaRada.Models
 {
     public class Projekt:Entitet
     {
