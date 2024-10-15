@@ -74,8 +74,8 @@ export default function ZadaciPromjena() {
 
     promjena({
       naziv: podaci.get('naziv'),     
-      pocetak: parseInt(podaci.get('pocetak')),
-      zavrsetak: parseInt(podaci.get('zavrsetak')),
+      pocetak: podaci.get('pocetak'),
+      zavrsetak: podaci.get('zavrsetak'),
       projektSifra: parseInt(projektSifra),
       opis: podaci.get('opis')
     });
