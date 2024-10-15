@@ -5,6 +5,7 @@ import { RoutesNames } from "../../Constants";
 import { FaEdit, FaTrash } from "react-icons/fa";
 import { IoIosAdd } from "react-icons/io";
 import Service from "../../services/ZadatakService";
+import moment from "moment";
 
 
 
@@ -36,6 +37,14 @@ export default function ZadatakPregled(){
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
+
+    function formatirajDatum(pocetak, zavrsetak){
+        if(pocetak==null){
+            return 'Nije definirano';
+        }
+        return moment.utc(pocetak, zavrsetak).format('DD. MM. YYYY.');
+    }
+
     return (
 
         <Container>
@@ -58,9 +67,11 @@ export default function ZadatakPregled(){
                 <tbody>
                     {zadaci && zadaci.map((entitet,index)=>(
                         <tr key={index}>
-                            <td>{entitet.naziv}</td>
-                            <td>{entitet.pocetak}</td>
-                            <td>{entitet.zavrsetak}</td>
+                            <td>{entitet.naziv}</td> 
+                            <td className={'sredina'}>
+                                {formatirajDatum(entitet.pocetak)}</td>
+                            <td className={'sredina'}>
+                                {formatirajDatum(entitet.zavrsetak)}</td>
                             <td>{entitet.projektNaziv}</td>
                             <td>{entitet.opis}</td>                           
                             <td className="sredina">
