@@ -2,10 +2,11 @@ import { useEffect, useRef, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import ProjektService from "../../services/ProjektService";
 import { RoutesNames } from "../../Constants";
-import { Button, Col, Form, FormGroup, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Row, Table } from "react-bootstrap";
 import Service from '../../services/ZadatakService';
 import { AsyncTypeahead } from "react-bootstrap-typeahead";
 import DjelatnikService from "../../services/DjelatnikService";
+import { FaTrash } from "react-icons/fa";
 
 
 
@@ -112,9 +113,9 @@ export default function ZadaciPromjena() {
   }
 
   return (
-  <>
+  <Container>
     Mjenjanje podataka zadatka
-
+    <hr/>
 <Row>
   <Col key='1' sm={12} lg={6} md={6}>
   <Form onSubmit={obradiSubmit}>
@@ -229,6 +230,6 @@ export default function ZadaciPromjena() {
           </div>
         </Col>
 </Row>
-</>
+</Container>
 );
 }
