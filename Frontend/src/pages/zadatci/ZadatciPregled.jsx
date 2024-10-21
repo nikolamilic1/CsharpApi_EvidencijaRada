@@ -75,6 +75,7 @@ export default function ZadatakPregled(){
                             <td>{entitet.projektNaziv}</td>
                             <td>{entitet.opis}</td>                           
                             <td className="sredina">
+                                
                                     <Button
                                         variant='primary'
                                         onClick={()=>{navigate(`/zadatak/${entitet.sifra}`)}}
@@ -83,9 +84,7 @@ export default function ZadatakPregled(){
                                     size={20}
                                     />
                                     </Button>
-                               
-                                    
-                                    &nbsp;
+                                                                                                                  
                                     <Button
                                         variant='danger'
                                         onClick={() => obrisiZadatak(entitet.sifra)}
