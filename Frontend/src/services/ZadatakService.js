@@ -1,5 +1,6 @@
 import { HttpService } from "./HttpService"
 
+
 async function get(){
     return await HttpService.get('/Zadatak')
     .then((odgovor)=>{
@@ -18,7 +19,6 @@ async function getBySifra(sifra) {
         return {greska: true, poruka: 'Ne postoji zadatak!'}
     })    
 }
-
 
 async function obrisi(sifra) {
     return await HttpService.delete('/Zadatak/' + sifra)
@@ -76,8 +76,28 @@ async function getDjelatnici(sifra) {
         //console.table(odgovor.data);
         return {greska: false, poruka: odgovor.data}
     })
-    .catch((e)=>{return {greska: true, poruka: 'Problem kod dohvaćanja djelatnika'}})
-    
+    .catch((e)=>{return {greska: true, poruka: 'Problem kod dohvaćanja djelatnika'}})    
+}
+
+
+async function dodajDjelatnika(zadatak, djelatnik) {
+    return await HttpService.post('/Zadatak/' + zadatak + '/dodaj/'+djelatnik)
+    .then((odgovor)=>{
+        return {greska: false, poruka: odgovor.data }
+    })
+    .catch((e)=>{
+        return {greska: true, poruka: 'Djelatnik se ne može dodati na grupu'}
+    })
+}
+
+async function obrisiDjelatnika(zadatak, djelatnik) {
+    return await HttpService.delete('/Zadatak/' + zadatak + '/obrisi/' + djelatnik)
+    .then((odgovor)=>{
+        return {greska: false, poruka: odgovor.data}        
+    })
+    .catch((e)=>{
+        return {greska: true, poruka: 'Djelatnik se ne može obrisati iz grupe'}
+    })
 }
 
 export default{
@@ -86,5 +106,7 @@ export default{
     obrisi,
     dodaj,
     promjena,
-    getDjelatnici
+    getDjelatnici,
+    dodajDjelatnika,
+    obrisiDjelatnika
 }
