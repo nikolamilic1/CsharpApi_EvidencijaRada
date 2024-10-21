@@ -1,4 +1,4 @@
-import { Button, Table } from "react-bootstrap";
+import { Button, Container, Table } from "react-bootstrap";
 import ProjektService from "../../services/ProjektService";
 import { useEffect, useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
@@ -53,7 +53,7 @@ function obrisi(sifra){
 // },[]);
 
     return(
-        <>
+        <Container>
             <Link to={RoutesNames.PROJEKT_NOVI}>Dodaj novi projekt</Link>
             <Table striped bordered hover responsive>
                 <thead>
@@ -86,6 +86,6 @@ function obrisi(sifra){
                     ))}
                 </tbody>
             </Table>
-        </>
+        </Container>
     )
 }
