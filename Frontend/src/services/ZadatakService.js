@@ -70,10 +70,21 @@ async function promjena(sifra,Zadatak) {
     })
 }
 
+async function getDjelatnici(sifra) {
+    return await HttpService.get('/Zadatak/Djelatnik/'+ sifra)
+    .then((odgovor)=>{
+        //console.table(odgovor.data);
+        return {greska: false, poruka: odgovor.data}
+    })
+    .catch((e)=>{return {greska: true, poruka: 'Problem kod dohvaćanja djelatnika'}})
+    
+}
+
 export default{
     get,
     getBySifra,
     obrisi,
     dodaj,
-    promjena
+    promjena,
+    getDjelatnici
 }
