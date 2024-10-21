@@ -2,7 +2,7 @@ import { Link, useNavigate } from "react-router-dom";
 import DjelatnikService from "../../services/DjelatnikService";
 import { RoutesNames } from "../../Constants";
 import { useState, useEffect } from "react";
-import { Button, Table } from "react-bootstrap";
+import { Button, Container, Table } from "react-bootstrap";
 
 
 
@@ -53,7 +53,7 @@ export default function DjelatniciPregled(){
 
 
     return(
-        <>
+        <Container>
             <Link to={RoutesNames.DJELATNIK_NOVI}>Dodaj novog djelatnika</Link>            
             <Table striped bordered hover responsive>
                 <thead>
@@ -90,7 +90,7 @@ export default function DjelatniciPregled(){
                     ))}
                 </tbody>
             </Table>
-        </>
+        </Container>
     )
 
 
