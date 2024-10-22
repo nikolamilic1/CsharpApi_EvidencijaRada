@@ -37,8 +37,8 @@ export default function ZadaciPromjena() {
       return;
     }
     let zadatak = odgovor.poruka;
-    odgovor.poruka.pocetak = moment.utc(odgovor.poruka.pocetak).format('DD-MM-yyyy');
-    odgovor.poruka.zavrsetak = moment.utc(odgovor.poruka.zavrsetak).format('DD-MM-yyyy');
+    zadatak.pocetak = moment.utc(zadatak.pocetak).format('yyyy-MM-DD');
+    zadatak.zavrsetak = moment.utc(zadatak.zavrsetak).format('yyyy-MM-DD');
     setZadatak(zadatak);
     setProjektSifra(zadatak.projektSifra); 
     }

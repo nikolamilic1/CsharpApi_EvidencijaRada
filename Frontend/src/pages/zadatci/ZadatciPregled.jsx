@@ -72,7 +72,7 @@ export default function ZadatakPregled(){
                                 {formatirajDatum(entitet.pocetak)}</td>
                             <td className={'sredina'}>
                                 {formatirajDatum(entitet.zavrsetak)}</td>
-                            <td>{entitet.projektNaziv}</td>
+                            <td>{entitet.projekt}</td>
                             <td>{entitet.opis}</td>                           
                             <td className="sredina">
                                 
