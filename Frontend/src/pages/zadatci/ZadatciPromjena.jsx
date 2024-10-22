@@ -7,6 +7,7 @@ import Service from '../../services/ZadatakService';
 import { AsyncTypeahead, TypeaheadRef } from "react-bootstrap-typeahead";
 import DjelatnikService from "../../services/DjelatnikService";
 import { FaTrash } from "react-icons/fa";
+import moment from "moment";
 
 
 
@@ -36,6 +37,8 @@ export default function ZadaciPromjena() {
       return;
     }
     let zadatak = odgovor.poruka;
+    odgovor.poruka.pocetak = moment.utc(odgovor.poruka.pocetak).format('DD-MM-yyyy');
+    odgovor.poruka.zavrsetak = moment.utc(odgovor.poruka.zavrsetak).format('DD-MM-yyyy');
     setZadatak(zadatak);
     setProjektSifra(zadatak.projektSifra); 
     }
