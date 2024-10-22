@@ -16,7 +16,7 @@ export default function ZadatakPregled(){
     async function dohvatiZadatke() {
        await Service.get()
        .then((odgovor)=>{
-        //console.log(odgovor);
+        console.log(odgovor);
         setZadaci(odgovor);
        })
         .catch((e)=>{console.log(e)});
