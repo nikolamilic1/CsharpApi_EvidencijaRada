@@ -86,7 +86,7 @@ async function dodajDjelatnika(zadatak, djelatnik) {
         return {greska: false, poruka: odgovor.data }
     })
     .catch((e)=>{
-        return {greska: true, poruka: 'Djelatnik se ne može dodati na grupu'}
+        return {greska: true, poruka: 'Djelatnik se ne može dodati na zadatak'}
     })
 }
 
@@ -96,7 +96,7 @@ async function obrisiDjelatnika(zadatak, djelatnik) {
         return {greska: false, poruka: odgovor.data}        
     })
     .catch((e)=>{
-        return {greska: true, poruka: 'Djelatnik se ne može obrisati iz grupe'}
+        return {greska: true, poruka: 'Djelatnik se ne može obrisati sa zadatka'}
     })
 }
 
