@@ -204,7 +204,7 @@ namespace CsharpApi_EvidencijaRada.Controllers
                 {
                     return BadRequest("Ne postoji zadatak s šifrom " + sifraZadatak + " u bazi");
                 }
-
+               
                 return Ok(_mapper.Map<List<DjelatnikDTORead>>(p.Djelatnik));
             }
             catch (Exception ex)
@@ -245,7 +245,7 @@ namespace CsharpApi_EvidencijaRada.Controllers
                 _context.SaveChanges();
                 return Ok(new
                 {
-                    poruka = "Djelatnik " + djelatnik.Prezime + " " + djelatnik.Ime + " dodan na grupu "
+                    poruka = "Djelatnik " + djelatnik.Prezime + " " + djelatnik.Ime + " je dodan na zadatak "
                  + zadatak.Naziv
                 });
             }
