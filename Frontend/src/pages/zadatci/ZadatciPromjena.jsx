@@ -4,7 +4,7 @@ import ProjektService from "../../services/ProjektService";
 import { RoutesNames } from "../../Constants";
 import { Button, Col, Container, Form, Row, Table } from "react-bootstrap";
 import Service from '../../services/ZadatakService';
-import { AsyncTypeahead } from "react-bootstrap-typeahead";
+import { AsyncTypeahead, TypeaheadRef } from "react-bootstrap-typeahead";
 import DjelatnikService from "../../services/DjelatnikService";
 import { FaTrash } from "react-icons/fa";
 
@@ -66,6 +66,7 @@ export default function ZadaciPromjena() {
       }
       await dohvatiDjelatnici();
       typeaheadRef.current.clear();
+      
     }
     
     async function obrisiDjelatnika(djelatnik) {
@@ -215,7 +216,7 @@ export default function ZadaciPromjena() {
                     </td>
                     <td>
                       <Button variant='danger' onClick={() =>
-                          obrisiDjelatnika(djelatnik.sifra)                          
+                          obrisiDjelatnika(routeParams.sifra, djelatnik.sifra)                          
                         } >
                         <FaTrash />
                       </Button>
