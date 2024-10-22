@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import ProjektService from "../../services/ProjektService";
 import Service from '../../services/ZadatakService';
 import { RoutesNames } from "../../Constants";
-import { Button, Col, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
 
 
 
@@ -54,9 +54,9 @@ export default function ZadatciDodaj() {
 
     }
     return (
-        <>
+        <Container>
          Dodavanje novog zadatka
-      
+      <hr/>
       <Form onSubmit={obradiSubmit}>
           <Form.Group controlId="naziv">
               <Form.Label>Naziv</Form.Label>
@@ -114,7 +114,7 @@ export default function ZadatciDodaj() {
               </Col>
           </Row>
       </Form>
-        </>
+        </Container>
     )
 }
 
