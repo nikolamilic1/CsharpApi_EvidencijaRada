@@ -16,7 +16,7 @@ export default function ZadatakPregled(){
     async function dohvatiZadatke() {
        await Service.get()
        .then((odgovor)=>{
-        console.log(odgovor);
+        //console.log(odgovor);
         setZadaci(odgovor);
        })
         .catch((e)=>{console.log(e)});
@@ -24,7 +24,7 @@ export default function ZadatakPregled(){
 
     async function obrisiZadatak(sifra) {
         const odgovor = await Service.obrisi(sifra);
-        // console.log(odgovor);
+        console.log(odgovor);
         if(odgovor.greska){
             alert(odgovor.poruka);
             return;
