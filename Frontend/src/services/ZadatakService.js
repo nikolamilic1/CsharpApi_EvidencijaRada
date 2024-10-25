@@ -90,7 +90,7 @@ async function dodajDjelatnika(zadatak, djelatnik) {
     })
 }
 
-async function obrisiDjelatnika(zadatak, djelatnik) {
+async function obrisiDjelatnika(zadatak,djelatnik) {
     return await HttpService.delete('/Zadatak/' + zadatak + '/obrisi/' + djelatnik)
     .then((odgovor)=>{
         return {greska: false, poruka: odgovor.data}        
